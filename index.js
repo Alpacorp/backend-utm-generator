@@ -22,6 +22,7 @@ app.use("/api/auth", require("./routes/auth"));
 app.use("/api/audience", require("./routes/audience"));
 app.use("/api/businessline", require("./routes/businessLine"));
 app.use("/api/channel", require("./routes/channel"));
+app.use("/api/medium", require("./routes/medium"));
 
 // Listen
 app.listen(process.env.PORT, () => {
