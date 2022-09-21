@@ -11,4 +11,4 @@ const BusinessLineSchema = Schema({
   },
 });
 
-module.exports = model("BusinessLine", BusinessLineSchema);
+module.exports = model("BusinessLine", BusinessLineSchema, "businessline");

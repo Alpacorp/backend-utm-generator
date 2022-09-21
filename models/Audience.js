@@ -12,4 +12,4 @@ const AudienceSchema = Schema({
   },
 });
 
-module.exports = model("Audience", AudienceSchema);
+module.exports = model("Audience", AudienceSchema, "audience");

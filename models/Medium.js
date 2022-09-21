@@ -11,4 +11,4 @@ const MediumSchema = Schema({
   },
 });
 
-module.exports = model("Medium", MediumSchema);
+module.exports = model("Medium", MediumSchema, "medium");

@@ -28,8 +28,6 @@ router.post(
   loginUser
 );
 
-router.use(validateJWT);
-
 router.post(
   "/new",
   [
@@ -43,6 +41,8 @@ router.post(
   ],
   createUser
 );
+
+router.use(validateJWT);
 
 router.get("/users", getUsers);
 

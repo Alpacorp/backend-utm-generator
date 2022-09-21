@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const ModelBuySchema = Schema({
+const SourceMediaSchema = Schema({
   name: {
     type: String,
     required: true,
@@ -11,4 +11,4 @@ const ModelBuySchema = Schema({
   },
 });
 
-module.exports = model("ModelBuy", ModelBuySchema, "modelbuy");
+module.exports = model("SourceMedia", SourceMediaSchema, "sourcemedia");
