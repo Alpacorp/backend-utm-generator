@@ -1,16 +1,16 @@
 /*
-  Strategy routes
-  host + /api/strategy
+  TypeAd Routes
+  host + /api/typead
 */
 
 const { Router } = require("express");
 const { check } = require("express-validator");
 const {
-  createStrategy,
-  getStrategy,
-  updateStrategy,
-  deleteStrategy,
-} = require("../controllers/strategy");
+  createTypeAd,
+  getTypeAd,
+  updateTypeAd,
+  deleteTypeAd,
+} = require("../controllers/typeAd");
 const { validateInputs } = require("../middlewares/validateInputs");
 const { validateJWT } = require("../middlewares/validateJwt");
 const router = Router();
@@ -24,10 +24,10 @@ router.post(
     check("shortname", "shortname is required"),
     validateInputs,
   ],
-  createStrategy
+  createTypeAd
 );
-router.get("/strategy", getStrategy);
-router.put("/:id", updateStrategy);
-router.delete("/:id", deleteStrategy);
+router.get("/typead", getTypeAd);
+router.put("/:id", updateTypeAd);
+router.delete("/:id", deleteTypeAd);
 
 module.exports = router;

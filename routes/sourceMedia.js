@@ -12,7 +12,10 @@ const {
   deleteSourceMedia,
 } = require("../controllers/sourceMedia");
 const { validateInputs } = require("../middlewares/validateInputs");
+const { validateJWT } = require("../middlewares/validateJwt");
 const router = Router();
+
+router.use(validateJWT);
 
 router.post(
   "/new",

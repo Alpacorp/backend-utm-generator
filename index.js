@@ -26,6 +26,7 @@ app.use("/api/medium", require("./routes/medium"));
 app.use("/api/modelbuy", require("./routes/modelBuy"));
 app.use("/api/sourcemedia", require("./routes/sourceMedia"));
 app.use("/api/strategy", require("./routes/strategy"));
+app.use("/api/typead", require("./routes/typeAd"));
 
 // Listen
 app.listen(process.env.PORT, () => {
