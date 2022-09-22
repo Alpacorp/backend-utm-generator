@@ -4,9 +4,10 @@ const ModelBuySchema = Schema({
   name: {
     type: String,
     required: true,
+    unique: true,
   },
-  idchanneltype: {
-    type: Number,
+  shortname: {
+    type: String,
     required: true,
   },
 });

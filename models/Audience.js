@@ -4,11 +4,11 @@ const AudienceSchema = Schema({
   name: {
     type: String,
     required: [true, "The name is required"],
+    unique: true,
   },
   shortname: {
     type: String,
     required: [true, "The shortname is required"],
-    unique: true,
   },
 });
 

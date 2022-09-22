@@ -4,6 +4,7 @@ const MediumSchema = Schema({
   name: {
     type: String,
     required: true,
+    unique: true,
   },
   idchanneltype: {
     type: Number,

@@ -27,7 +27,7 @@ router.post(
   createAudience
 );
 router.get("/audiences", getAudiences);
-router.put("/audience/:id", updateAudience);
-router.delete("/audience/:id", deleteAudience);
+router.put("/:id", updateAudience);
+router.delete("/:id", deleteAudience);
 
 module.exports = router;

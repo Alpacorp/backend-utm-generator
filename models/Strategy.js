@@ -4,6 +4,7 @@ const StrategySchema = Schema({
   name: {
     type: String,
     required: true,
+    unique: true,
   },
   shortname: {
     type: String,
