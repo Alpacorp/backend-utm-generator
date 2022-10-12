@@ -10,13 +10,13 @@ const UserSchema = Schema({
     required: [true, "The email is required"],
     unique: true,
   },
+  role: {
+    type: String,
+    required: [true, "The role is required"],
+  },
   password: {
     type: String,
     required: [true, "The password is required"],
-  },
-  role: {
-    type: String,
-    required: true,
   },
 });
 

@@ -31,7 +31,6 @@ const createUser = async (req, res = response) => {
       ok: true,
       uid: user.id,
       name: user.name,
-      role: user.role,
       token,
     });
   } catch (error) {
@@ -67,7 +66,7 @@ const loginUser = async (req, res = response) => {
     }
 
     // Generate JWT
-    const token = await generateJWT(user.id, user.name);
+    const token = await generateJWT(user.id, user.name, user.role);
 
     res.json({
       ok: true,
@@ -160,6 +159,8 @@ const deleteUser = async (req, res = response) => {
 
 const renewToken = async (req, res = response) => {
   const { uid, name, role } = req;
+
+  console.log("req role", role);
 
   // Generate JWT
   const token = await generateJWT(uid, name, role);
