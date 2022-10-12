@@ -31,6 +31,7 @@ const createUser = async (req, res = response) => {
       ok: true,
       uid: user.id,
       name: user.name,
+      role: user.role,
       token,
     });
   } catch (error) {
@@ -72,6 +73,7 @@ const loginUser = async (req, res = response) => {
       ok: true,
       uid: user.id,
       name: user.name,
+      role: user.role,
       token,
     });
   } catch (error) {
@@ -104,14 +106,7 @@ const updateUser = async (req, res = response) => {
         ok: false,
         msg: "User not found",
       });
-    }
-    // else if (userDB.id !== uid) {
-    //   return res.status(401).json({
-    //     ok: false,
-    //     msg: "You are not allowed to edit this user",
-    //   });
-    // }
-    else {
+    } else {
       const newUser = {
         ...req.body,
         user: uid,

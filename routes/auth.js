@@ -33,6 +33,7 @@ router.post(
   [
     check("name", "name is required").not().isEmpty(),
     check("email", "email is required").isEmail(),
+    check("role", "role is required").not().isEmpty(),
     check("password", "password is required")
       .not()
       .isEmpty()
