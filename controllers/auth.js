@@ -159,15 +159,16 @@ const deleteUser = async (req, res = response) => {
 };
 
 const renewToken = async (req, res = response) => {
-  const { uid, name } = req;
+  const { uid, name, role } = req;
 
   // Generate JWT
-  const token = await generateJWT(uid, name);
+  const token = await generateJWT(uid, name, role);
 
   res.json({
     ok: true,
     uid,
     name,
+    role,
     token,
   });
 };
