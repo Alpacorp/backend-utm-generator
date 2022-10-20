@@ -20,7 +20,7 @@ const createChannel = async (req, res = response) => {
 };
 
 const getChannels = async (req, res = response) => {
-  const channels = await Channel.find({}, "name shortname");
+  const channels = await Channel.find({}, "name shortname idchanneltype");
   res.json({
     ok: true,
     channels,
@@ -39,11 +39,11 @@ const updateChannel = async (req, res = response) => {
       });
     }
 
-    const { name, shortname } = req.body;
+    const { name, shortname, idchanneltype } = req.body;
 
     const channelUpdated = await Channel.findByIdAndUpdate(
       channelId,
-      { name, shortname },
+      { name, shortname, idchanneltype },
       { new: true }
     );
 

@@ -20,8 +20,8 @@ router.use(validateJWT);
 router.post(
   "/new",
   [
-    check("name", "name is requierd"),
-    check("idchanneltype", "idchanneltype is requierd"),
+    check("name", "name is requierd").not().isEmpty(),
+    check("idchanneltype", "idchanneltype is requierd").not().isEmpty(),
     validateInputs,
   ],
   createSourceMedia

@@ -22,6 +22,7 @@ router.post(
   [
     check("name", "name is required").not().isEmpty(),
     check("shortname", "shortname is required").not().isEmpty(),
+    check("idchanneltype", "idchanneltype is required").not().isEmpty(),
     validateInputs,
   ],
   createChannel

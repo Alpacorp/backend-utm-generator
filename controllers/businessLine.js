@@ -20,7 +20,11 @@ const createBusinessLine = async (req, res = response) => {
 };
 
 const getBusinessLines = async (req, res = response) => {
-  const businessLines = await BusinessLine.find({}, "name shortname");
+  const businessLines = await BusinessLine.find({}, "name shortname date").sort(
+    {
+      date: -1,
+    }
+  );
   res.json({
     ok: true,
     businessLines,
