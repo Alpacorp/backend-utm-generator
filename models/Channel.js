@@ -10,6 +10,10 @@ const ChannelSchema = Schema({
     type: String,
     required: [true, "The shortname is required"],
   },
+  idchanneltype: {
+    type: Number,
+    required: [true, "The idchanneltype is required"],
+  },
 });
 
 module.exports = model("Channel", ChannelSchema, "channel");

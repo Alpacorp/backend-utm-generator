@@ -4,7 +4,6 @@ const SourceMediaSchema = Schema({
   name: {
     type: String,
     required: true,
-    unique: true,
   },
   idchanneltype: {
     type: Number,

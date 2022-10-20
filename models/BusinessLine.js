@@ -11,6 +11,10 @@ const BusinessLineSchema = Schema({
     required: [true, "The shortname is required"],
     unique: true,
   },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 module.exports = model("BusinessLine", BusinessLineSchema, "businessline");
