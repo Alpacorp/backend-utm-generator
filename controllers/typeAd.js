@@ -3,6 +3,16 @@ const TypeAd = require("../models/TypeAd");
 
 const createTypeAd = async (req, res = response) => {
   const typeAd = new TypeAd(req.body);
+  const { shortname } = req.body;
+  const shortnameExists = await TypeAd.findOne({ shortname });
+
+  if (shortnameExists) {
+    return res.status(400).json({
+      ok: false,
+      msg: "Type Ad already exists",
+    });
+  }
+
   try {
     const typeAdDB = await typeAd.save();
     res.status(201).json({
@@ -19,7 +29,7 @@ const createTypeAd = async (req, res = response) => {
 };
 
 const getTypeAd = async (req, res = response) => {
-  const typeAd = await TypeAd.find();
+  const typeAd = await TypeAd.find().sort({ date: -1 });
   res.json({
     ok: true,
     typeAd,
@@ -37,6 +47,7 @@ const updateTypeAd = async (req, res = response) => {
       });
     }
     const { name, shortname } = req.body;
+
     const typeAdUpdated = await TypeAd.findByIdAndUpdate(
       id,
       { name, shortname },

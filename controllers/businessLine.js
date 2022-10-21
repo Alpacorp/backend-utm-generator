@@ -3,6 +3,15 @@ const BusinessLine = require("../models/BusinessLine");
 
 const createBusinessLine = async (req, res = response) => {
   const businessLine = new BusinessLine(req.body);
+  const { shortname } = req.body;
+  const shortnameExists = await BusinessLine.findOne({ shortname });
+
+  if (shortnameExists) {
+    return res.status(400).json({
+      ok: false,
+      msg: "Business Line shortname already exists",
+    });
+  }
 
   try {
     const businessLineDB = await businessLine.save();

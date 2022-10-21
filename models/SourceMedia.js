@@ -9,6 +9,10 @@ const SourceMediaSchema = Schema({
     type: Number,
     required: true,
   },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 module.exports = model("SourceMedia", SourceMediaSchema, "sourcemedia");

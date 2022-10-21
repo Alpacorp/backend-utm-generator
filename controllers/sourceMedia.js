@@ -1,8 +1,19 @@
 const { response } = require("express");
+const Channel = require("../models/Channel");
 const SourceMedia = require("../models/SourceMedia");
 
 const createSourceMedia = async (req, res = response) => {
   const sourceMedia = new SourceMedia(req.body);
+  const { idchanneltype } = req.body;
+  const idchanneltypeExists = await Channel.findOne({ idchanneltype });
+
+  if (!idchanneltypeExists) {
+    return res.status(400).json({
+      ok: false,
+      msg: "Channel Type not found",
+    });
+  }
+
   try {
     const sourceMediaDB = await sourceMedia.save();
     res.status(201).json({
@@ -19,7 +30,7 @@ const createSourceMedia = async (req, res = response) => {
 };
 
 const getSourceMedia = async (req, res = response) => {
-  const sourceMedia = await SourceMedia.find();
+  const sourceMedia = await SourceMedia.find().sort({ date: -1 });
   res.json({
     ok: true,
     source: sourceMedia,
@@ -28,6 +39,16 @@ const getSourceMedia = async (req, res = response) => {
 
 const updateSourceMedia = async (req, res = response) => {
   const id = req.params.id;
+  const { idchanneltype } = req.body;
+  const idchanneltypeExists = await Channel.findOne({ idchanneltype });
+
+  if (!idchanneltypeExists) {
+    return res.status(400).json({
+      ok: false,
+      msg: "Channel Type not found",
+    });
+  }
+
   try {
     const sourceMediaDB = await SourceMedia.findById(id);
     if (!sourceMediaDB) {

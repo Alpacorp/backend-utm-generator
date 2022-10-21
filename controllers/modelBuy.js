@@ -19,7 +19,9 @@ const createModelBuy = async (req, res = response) => {
 };
 
 const getModelBuys = async (req, res = response) => {
-  const modelBuys = await ModelBuy.find({}, "name shortname");
+  const modelBuys = await ModelBuy.find({}, "name shortname date").sort({
+    date: -1,
+  });
   res.json({
     ok: true,
     modelBuys,
