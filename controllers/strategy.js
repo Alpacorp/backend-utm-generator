@@ -3,6 +3,16 @@ const Strategy = require("../models/Strategy");
 
 const createStrategy = async (req, res = response) => {
   const strategy = new Strategy(req.body);
+  const { shortname } = req.body;
+  const shortnameExists = await Strategy.findOne({ shortname });
+
+  if (shortnameExists) {
+    return res.status(400).json({
+      ok: false,
+      msg: "Strategy already exists",
+    });
+  }
+
   try {
     const strategyDB = await strategy.save();
     res.status(201).json({
@@ -19,7 +29,7 @@ const createStrategy = async (req, res = response) => {
 };
 
 const getStrategy = async (req, res = response) => {
-  const strategy = await Strategy.find();
+  const strategy = await Strategy.find().sort({ date: -1 });
   res.json({
     ok: true,
     strategy,
@@ -37,6 +47,7 @@ const updateStrategy = async (req, res = response) => {
       });
     }
     const { name, shortname } = req.body;
+
     const strategyUpdated = await Strategy.findByIdAndUpdate(
       id,
       { name, shortname },

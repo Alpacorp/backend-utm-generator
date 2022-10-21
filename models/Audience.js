@@ -10,6 +10,10 @@ const AudienceSchema = Schema({
     type: String,
     required: [true, "The shortname is required"],
   },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 module.exports = model("Audience", AudienceSchema, "audience");

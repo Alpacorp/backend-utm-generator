@@ -20,7 +20,9 @@ const createAudience = async (req, res = response) => {
 };
 
 const getAudiences = async (req, res = response) => {
-  const audiences = await Audience.find({}, "name shortname");
+  const audiences = await Audience.find({}, "name shortname date").sort({
+    date: -1,
+  });
   res.json({
     ok: true,
     audiences,

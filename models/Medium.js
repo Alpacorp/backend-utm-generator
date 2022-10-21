@@ -4,10 +4,15 @@ const MediumSchema = Schema({
   name: {
     type: String,
     required: true,
+    unique: [true, "The name must be unique"],
   },
   idchanneltype: {
     type: Number,
     required: true,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
   },
 });
 

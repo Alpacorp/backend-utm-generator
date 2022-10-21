@@ -9,10 +9,16 @@ const ChannelSchema = Schema({
   shortname: {
     type: String,
     required: [true, "The shortname is required"],
+    unique: [true, "The shortname must be unique"],
   },
   idchanneltype: {
     type: Number,
     required: [true, "The idchanneltype is required"],
+    unique: [true, "The idchanneltype must be unique"],
+  },
+  date: {
+    type: Date,
+    default: Date.now,
   },
 });
 

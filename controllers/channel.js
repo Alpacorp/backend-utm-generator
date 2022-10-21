@@ -3,6 +3,17 @@ const Channel = require("../models/Channel");
 
 const createChannel = async (req, res = response) => {
   const channel = new Channel(req.body);
+  const { idchanneltype, shortname } = req.body;
+
+  const idchannelTypeExists = await Channel.findOne({ idchanneltype });
+  const shortnameExists = await Channel.findOne({ shortname });
+
+  if (idchannelTypeExists || shortnameExists) {
+    return res.status(400).json({
+      ok: false,
+      msg: "Values already exists",
+    });
+  }
 
   try {
     const channelDB = await channel.save();
@@ -20,7 +31,12 @@ const createChannel = async (req, res = response) => {
 };
 
 const getChannels = async (req, res = response) => {
-  const channels = await Channel.find({}, "name shortname idchanneltype");
+  const channels = await Channel.find(
+    {},
+    "name shortname idchanneltype date"
+  ).sort({
+    date: -1,
+  });
   res.json({
     ok: true,
     channels,
