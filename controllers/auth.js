@@ -85,7 +85,7 @@ const loginUser = async (req, res = response) => {
 };
 
 const getUsers = async (req, res = response) => {
-  const users = await User.find();
+  const users = await User.find().sort({ date: -1 });
 
   res.json({
     ok: true,

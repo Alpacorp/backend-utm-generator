@@ -4,11 +4,14 @@ const SourceMediaSchema = Schema({
   name: {
     type: String,
     required: true,
-    unique: true,
   },
   idchanneltype: {
     type: Number,
     required: true,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
   },
 });
 

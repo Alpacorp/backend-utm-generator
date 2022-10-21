@@ -9,7 +9,11 @@ const BusinessLineSchema = Schema({
   shortname: {
     type: String,
     required: [true, "The shortname is required"],
-    unique: true,
+    unique: [true, "The shortname must be unique"],
+  },
+  date: {
+    type: Date,
+    default: Date.now,
   },
 });
 

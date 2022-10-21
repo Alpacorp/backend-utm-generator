@@ -18,6 +18,10 @@ const UserSchema = Schema({
     type: String,
     required: [true, "The password is required"],
   },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 module.exports = model("User", UserSchema, "user");
